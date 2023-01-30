@@ -18,7 +18,48 @@
     <!--
         defer : index.html 로딩 시 다운받아 실행
     -->
-    <body>
+    <style>
+        /*
+        [1] css 변수 코딩하기
+        --custom;
+        */
+        :root {
+            /* 제일 상단에서 변수정의 */
+            --font-size:32px;
+            --background-color :thistle;
+            --base-space:8px;
+        }
+        .first-list {
+            background-color:var(--background-color);
+            color:whitesmoke;
+            margin-left:var(--base-space);         
+            font-size:var(--font-size);
+        }
+        .second-list {
+            background-color:var(--background-color);
+            color:whitesmoke;
+            margin-left:calc(var(--base-space)*2);
+            /* calc() : 계산을 해줌, base-space값의 2개로 계산함*/
+        }
 
+        @media screen and (max-width:768px){
+            :root {
+                /* 제일 상단에서 변수정의 */
+                --font-size:32px;
+                --background-color :salmon;
+                --base-space:8px;
+            }
+        }
+    </style>
+    <body>
+        <ul class="first-list">
+            <li>Orange</li>
+            <li>Apple</li>
+        </ul>
+        <ul class="second-list">
+            <li>Korea</li>
+            <li>Japan</li>
+            <li>China</li>
+        </ul>
     </body>
 </html>

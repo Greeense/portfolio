@@ -1,0 +1,48 @@
+<!--1. Using data attributes
+
+1) data-* : ??
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+       <meta charset=""UTF-8"/>
+       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+       <title>Data Attributes</title>
+       <style>
+        div {
+            width:200px;
+            height:200px;
+            background-color:tomato;
+            margin-bottom:50px;
+        }
+
+        /* 속성 선택을 통해 data-*로 표시*/
+        [data-display-name='green']{
+            backgorond-color:white;
+        }
+        /* or */
+        div[data-display-name="green"] {
+            background-color:white;
+        }
+       </style>
+    </head>
+    <body>
+        <div data-display-name="green" data-index="1"></div>
+        <div data-display-name="coding" data-index="2"></div>
+
+        <script>
+            const grin = document.querySelector('div');
+            <!-- or-->
+            const grin2 = document.querySelector('div[data-display-name="green"]')
+            
+            //아래와 같이 호출됨!
+            console.log(grin.dataset);
+            console.log(grin.dataset.displayName);
+            //DOM 요소란?
+            /*
+            DOM에 HTML key,value가 다보임
+            DOM요소에 추가는 별로 좋은 방법이 아님(암호화해야함)
+            */
+        </script>
+    </body>
+</html>
