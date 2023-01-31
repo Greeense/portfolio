@@ -1,0 +1,7 @@
+> BEM(Block Element Modifier)
+(ex) block__element--modifier
+(ex) .card__img    .card__title
+     .card--dark / .card__button--blue, .card__button--pink => card안의 버튼인 경우
+                                        .button, .button--blue => 개별 버튼인 경우
+     블럭단위 구분이기 때문에 card가 cards에 포함되는 블럭이면 .cards, .card 각각 별개로 나눠지기
+     (ex) not.. .cards__card__button--blue (x)
