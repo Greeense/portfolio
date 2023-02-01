@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    </head>
+    <style>
+        .box {
+            width:100px;
+            height:120px;
+            background-color:brown;
+            margin-bottom : 20px;
+        }
+        .box1 {
+            transform :translate(100px); /* x, y값 이동
+            0,0은 왼쪽 상단*/
+        }
+        .box2 {
+            transform:translate(-50px,-20px);
+        }
+        .box3 {
+            transform:scale(1.2);
+        }
+        .box4 {
+            transform:rotate(45deg);
+        }
+        .box5 {
+            transform : translate(100px,100px) scale(2) rotate(45deg);
+        }
+    </style>
+    <body>
+        <div class="box box1"></div>
+        <div class="box box2"></div>
+        <div class="box box3"></div>
+        <div class="box box4"></div>
+        <div class="box box5"></div>
+    </body>
+</html>

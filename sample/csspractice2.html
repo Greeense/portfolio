@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+    <head>
+    </head>
+    <style>
+        /* aboulte와 */
+        .outer {
+            width:200px;
+            height:200px;
+            margin-bottom : 20px;
+            background-color: green;
+        }
+        .box {
+            width:100px;
+            height:100px;
+            background-color: red;
+        }
+        .inner {
+            width:100%;
+            height:50%;
+        }
+        .inner1 {
+            background-color: blue;
+        }
+        .inner2 {
+            background-color: yellow;
+        }
+
+
+        .box1 .inner1 {
+            position : absolute;
+            /* position : static 일 경우, top, left 등 무시됨. 원래 자리에 계속 유지됨.
+               position : relative 일 경우, 원래 자리 유지하면서 inner1이 top, left 등으로 이동함*/
+            left:40px;
+            top:50px;
+        }
+
+        .box2 .inner1 {
+            /*
+            absolute일 경우, 근접한 부모의 기본값이 static이 아닌 곳으로 이동... 이경우, body로 이동
+            */
+            position:static;
+            top:30px;
+            left:100px
+        }
+    </style>
+    <body>
+        <div class="outer">
+            <div class="box box1">
+                <div class="inner inner1">inner1</div>
+                <div class="inner inner2">inner2</div>
+            </div>
+        </div>
+        <div class="outer">
+            <div class="box box2">
+                <div class="inner inner1">inner1</div>
+                <div class="inner inner2">inner2</div>
+            </div>
+        </div>
+    </body>
+
+</html>

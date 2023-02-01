@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <style>
+        /*
+
+            background 이미지 속성
+        */
+        .box {
+            width:100%;
+            height:200px;
+            margin-bottom:20px;
+        }
+        .box1 {
+            background-image : url('https://images.unsplash.com/photo-1675116731363-c17d957f3444?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
+            background-repeat : no-repeat;
+            background-position:center;
+            background-size:cover;
+        }
+
+        .box2 {
+            background : center/cover no-repeat
+            url('https://images.unsplash.com/photo-1675116731363-c17d957f3444?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
+        }
+        
+        .box3 {
+            background : repeat left
+            url('https://images.unsplash.com/photo-1675116731363-c17d957f3444?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
+        }
+    </style>
+    <body>
+        <div class="box box1"></div>
+        <div class="box box2"></div>
+        <div class="box box3"></div>
+    </body>
+</html>

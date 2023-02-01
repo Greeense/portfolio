@@ -15,6 +15,14 @@
         }
         .box2 {
             padding:20px;
+            box-sizing: content-box;
+            /* padding, border 값과 무관하게, content box사이즈는 변하지 않음     MDM참조*/
+            border: 10px solid black;
+        }
+        .box3 {
+            padding:20px;
+            box-sizing: border-box; /* padding, border 값만큼 content 사이즈가 감소, 전체적인 크기는 유지됨.*/
+            border: 10px solid black;
         }
     </style>
     <body>
