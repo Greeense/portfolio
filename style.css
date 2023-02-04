@@ -171,9 +171,10 @@ p {
 
 /* Section common */
 .section {
-    padding:50px;
+    padding:16px;
     text-align : center;
     margin:auto;
+    padding-top:80px;
 }
 
 .section__container {
@@ -284,6 +285,7 @@ p {
     border-radius : var(--size-border-radius);
     font-size:var(--font-regular);
     padding:8px 48px;
+    position:relative; /* ! */
 }
 .category__btn.selected,
 .category__btn:hover {
@@ -303,9 +305,9 @@ p {
     height:24px;
     line-height:24px;
     display:inline-block;
-    position:relative;
+    position:absolute; /* ! */
     top : -20px;
-    left:4px;
+    right:16px;
     opacity: 0;
     transition:all var(--animation-duration) ease;
 }
@@ -448,8 +450,20 @@ p {
 }
 
 @media screen and (max-width:768px) {
+    :root {
+        /* fontsize */
+        --font-large : 30px;
+        --font-medium : 18px;
+        --font-regular : 16px;
+        --font-small : 14px;
+        --font-micro : 12px;     
+     }
+
     .navbar__toggle-btn {
         display : block;
+        right:16px;
+        font-size:var(--font-medium);
+        top:16px;
     }
     
     #navbar {
@@ -472,15 +486,21 @@ p {
         display:block;
     }
 
-
+    .section {
+        padding:16px;
+        padding-top:40px;
+    }
     .about__majors {
         flex-direction: column;
+        margin: 30px 0;
     }
-
+    
     .major {
-        margin-bottom:38px;
+        margin-bottom:0px;
     }
-
+    .category__btn {
+        margin:4px 0;
+    }
     .skillset {
         flex-direction: column;
     }
@@ -488,9 +508,31 @@ p {
     .project {
         flex-grow :1;
     }
+    .testimonial {
+        flex-direction: column;
+        align-items: center;;
+    }
 
     .testimonial__avatar {
-        width:80px;
-        height:80px;
+        width:100px;
+        height:100px;
+    }
+    .testimonial__avatar.testimonial__avatar:nth-child(even),
+    .testimonial__avatar.testimonial__avatar:nth-child(odd) {
+        margin:0;
+        margin-bottom:8px;
+    }
+    /* html 순서 바꾸기 */
+    .testimonial__speech-bubble {
+        order:1; /* 해당 객체는 무조건 1번째로 온다. */
+    }
+
+    .arrow-up {
+        height:50px;
+        width:50px;
+        font-size:30px;
+        line-height: 50px;
+        bottom:16px;
+        right:16px;
     }
 }
