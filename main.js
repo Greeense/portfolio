@@ -8,11 +8,12 @@ const navbar = document.querySelector("#navbar");
 const navbarHeight = navbar.getBoundingClientRect().height;
 
 document.addEventListener('scroll', () => {
-    console.log(window.scrollY);
-    console.log("navbarHeight : "+navbarHeight);
+    // console.log(window.scrollY);
+    // console.log("navbarHeight : "+navbarHeight);
 
     if(window.scrollY > navbarHeight){
         navbar.classList.add('navbar--dark');
+        
         /* 스크롤 시 navbar 색조 업 */
     }else {
         navbar.classList.remove('navbar--dark');
@@ -22,7 +23,7 @@ document.addEventListener('scroll', () => {
 // handler srolling and tapping on the navar menu
 const navbarMenu = document.querySelector('.navbar__menu');
 navbarMenu.addEventListener('click', (event) => {
-    console.log(event.target.dataset.link);
+    // console.log(event.target.dataset.link);
     const target = event.target;
     const link = target.dataset.link;
     
@@ -36,9 +37,22 @@ navbarMenu.addEventListener('click', (event) => {
 //home: contact button
 const home__contact = document.querySelector('.home__contact');
 home__contact.addEventListener('click',(event) => {
-    console.log(event.target.dataset.link);
+    // console.log(event.target.dataset.link);
     scrollIntoView("#contact");
 });
+
+// make home slowloy fade to transparent as the window scrolls down
+const home = document.querySelector('.home__container');
+const homeHeight= home.getBoundingClientRect().height;
+document.addEventListener('scroll',()=>{
+    var opacityVal = (1 - (window.scrollY / homeHeight));
+    home.style.opacity = opacityVal;
+});
+
+
+
+
+
 
 function scrollIntoView(selector) {
     const scrollTo = document.querySelector(selector);
