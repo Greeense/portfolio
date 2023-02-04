@@ -30,11 +30,21 @@ navbarMenu.addEventListener('click', (event) => {
         return;
     }
     
+    scrollIntoView(link);
+});
+
+//home: contact button
+const home__contact = document.querySelector('.home__contact');
+home__contact.addEventListener('click',(event) => {
     console.log(event.target.dataset.link);
-    const scrollTo = document.querySelector(link);
+    scrollIntoView("#contact");
+});
+
+function scrollIntoView(selector) {
+    const scrollTo = document.querySelector(selector);
     scrollTo.scrollIntoView(
         {
             behavior:"smooth"
         }
     );
-});
+}
