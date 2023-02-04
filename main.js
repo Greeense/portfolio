@@ -69,11 +69,38 @@ const workBtnContainer = document.querySelector(".work__categories");
 const proejctContainer = document.querySelector(".work__projects");
 const projects = document.querySelectorAll('.project'); /*배열로 받아오기 */
 workBtnContainer.addEventListener('click', (e) => {
-    const filter = e.target.dataset.filter;
-    console.log(filter);
+    const filter = e.target.dataset.filte || e.target.parentNode.dataset.filter;
+    if(filter == null){
+        return;
+    }
+
+    proejctContainer.classList.add('anim-out');
+
+    setTimeout(() => {
+         /*  최신 js..*/
+        projects.forEach((project) => {
+            //console.log(project.dataset.type);
+            if(filter == "*" || filter === project.dataset.type) {
+                project.classList.remove('invisible');
+            } else {
+                project.classList.add('invisible');
+            }
+        });
+        /*
+        for(let project of projects){
+        
+        }
+        */
+        /* 내가 맨날 하는 방식
+        for(let i=0; i<projects.length;i++){
+            project = projects[i];
+        }
+        */
+        proejctContainer.classList.remove('anim-out');
+    },300);
 });
 
-
+// util
 function scrollIntoView(selector) {
     const scrollTo = document.querySelector(selector);
     scrollTo.scrollIntoView(
