@@ -307,7 +307,21 @@ p {
     opacity: 0;
     transition:all var(--animation-duration) ease;
 }
-
+.work__projects {
+    display :flex;
+    flex-wrap : wrap;
+    justify-content: center;
+}
+.project {
+    width:200px;
+    height:250px;
+    margin:2px;
+    background-color: gainsboro;
+}
+.project__img {
+    max-width:100%;
+    max-height:70%;
+}
 /* testimonials */
 #testimonials {
     background-color: var(--color-light-white);
@@ -364,6 +378,26 @@ p {
 .contact__links i:hover {
     transform:scale(1.1);
     color:var(--color-yellow);
+}
+
+.arrow-up {
+    position : fixed;
+    bottom : 50px;
+    right:50px;
+    width:70px;
+    height:70px;
+    font-size:50px;
+    background-color: var(--color-pink);
+    color:var(--color-white);
+    border-radius : 50%;
+    opacity: 0;
+    pointer-events: none; /* 클릭 비활성화  */
+    transition: all var(--animation-duration) ease-in;
+}
+
+.arrow-up.visible {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 @media screen and (max-width:768px) {

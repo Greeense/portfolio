@@ -49,9 +49,29 @@ document.addEventListener('scroll',()=>{
     home.style.opacity = opacityVal;
 });
 
+// show arrow-up button when scrolling
+const arrowup = document.querySelector('.arrow-up');
+document.addEventListener('scroll', () => {
+    if(window.scrollY > homeHeight /2) {
+        arrowup.classList.add('visible');
+    }else {
+        arrowup.classList.remove('visible');
+    }
+});
 
+// handle click on the "arrow-up" button
+arrowup.addEventListener('click',() => {
+    scrollIntoView('#home');
+});
 
-
+//project filter
+const workBtnContainer = document.querySelector(".work__categories");
+const proejctContainer = document.querySelector(".work__projects");
+const projects = document.querySelectorAll('.project'); /*배열로 받아오기 */
+workBtnContainer.addEventListener('click', (e) => {
+    const filter = e.target.dataset.filter;
+    console.log(filter);
+});
 
 
 function scrollIntoView(selector) {
