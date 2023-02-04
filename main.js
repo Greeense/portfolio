@@ -26,12 +26,18 @@ navbarMenu.addEventListener('click', (event) => {
     // console.log(event.target.dataset.link);
     const target = event.target;
     const link = target.dataset.link;
-    
+    target.classList.add('active');
     if(link == null){
         return;
     }
-    
+    navbarMenu.classList.remove('open');
     scrollIntoView(link);
+});
+
+// navbar toggle when small screen
+const navbarToggleBtn = document.querySelector('.navbar__toggle-btn');
+navbarToggleBtn.addEventListener('click',() => {
+    navbarMenu.classList.toggle('open');   
 });
 
 //home: contact button
