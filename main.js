@@ -74,8 +74,17 @@ workBtnContainer.addEventListener('click', (e) => {
         return;
     }
 
-    proejctContainer.classList.add('anim-out');
+    //remove selection
 
+    const active = document.querySelector('.category__btn.selected');
+    active.classList.remove('selected');
+   
+    const target = 
+        e.target.nodeName === 'BUTTON' ? e.target : e.target.parentNode;
+    console.log(target);
+    target.classList.add('selected');
+
+    proejctContainer.classList.add('anim-out');
     setTimeout(() => {
          /*  최신 js..*/
         projects.forEach((project) => {
