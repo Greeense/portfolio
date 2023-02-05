@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+    </head>
+    <style>
+        /*
+        스크롤 시 뭘 찾을 것인가?
+        */
+        * {
+            box-sizing: border-box;
+        }
+        .container {
+            width:600px;
+            height: 800px;
+            overflow-y:scroll;
+            background-color: lightyellow;
+        }
+        .box {
+            width : 300px;
+            height : 300px;
+            margin : 80px auto;
+            background-color: plum;
+            transition: 300ms;
+        }
+
+        .box.active {
+            background-color: purple;
+        }
+    </style>
+    <body>
+        <div class="container">
+            <div class="box">1</div>
+            <div class="box">2</div>
+            <div class="box">3</div>
+            <div class="box">4</div>
+            <div class="box">5</div>
+            <div class="box">6</div>
+            <div class="box">7</div>
+            <div class="box">8</div>
+            <div class="box">9</div>
+            <div class="box">10</div>
+            <div class="box">11</div>
+            <div class="box">12</div>
+        </div>
+        
+
+        <script>
+            //IntersectionObserve(callback, options) 원하는 요소가 화면에 들어왔을 때 알려줌
+            const boxes = document.querySelectorAll('.box');
+            const options = {
+                root : document.querySelector('.container'), //root명시없을 시 viewport(window부분) 가리킴. 
+                //container인 경우, container 안 기준으로 동작함/
+                //MDM참고
+                rootMargin :'0px', // 100px전에 미리 준비하겠다의미
+                threshold : 0.2 //얼마정도보이면 callback 실행하겠다 0~1
+                //20%보이면 들어오고 (1-20%=)80%보이면 나감
+            };
+            const callback = (entries, observer) => {
+                //entries는 배열임
+                entries.forEach(entry => {
+                    //console.log(entry.target);
+                    if(entry.isIntersecting) {
+                        //console.log("들어옴 :"+entry.target);
+                        entry.target.classList.add('active');
+                        /* 조금이라도 보이면 add됨 */
+                    }else {
+                        //console.log("나감 :"+entry.target);
+                        entry.target.classList.remove('active');
+                    }
+                });
+            };
+            const observer = new IntersectionObserver(callback, options);
+            boxes.forEach(box => observer.observe(box));
+        </script>
+    </body>
+</html>

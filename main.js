@@ -32,6 +32,7 @@ navbarMenu.addEventListener('click', (event) => {
     }
     navbarMenu.classList.remove('open');
     scrollIntoView(link);
+    selectNavItem(target);
 });
 
 // navbar toggle when small screen
@@ -115,7 +116,34 @@ workBtnContainer.addEventListener('click', (e) => {
     },300);
 });
 
-// util
+
+//1.모든 섹션 요소 가져오기
+//2. IntersectionObserver를 이용하여 모든 섹션 관찰
+//3. 보여지는 섹션에 해당하는 메뉴 아이템 활성화
+
+const sectionIds = [
+    '#home',
+    '#about',
+    '#skills',
+    '#work',
+    '#testimonials',
+    '#contact'
+];
+const sections = sectionIds.map(id => document.querySelector(id));
+const navItems = sectionIds.map(id =>
+    document.querySelector(`[data-link="${id}"]`)
+  );
+//console.log(sections);
+//console.log(navItems);
+let selectedNavItem = navItems[0];
+let selectedNavIndex = 0;
+
+function selectNavItem(selected){
+    selectedNavItem.classList.remove('active');
+    selectedNavItem = selected;
+    selectedNavItem.classList.add('active');
+}
+
 function scrollIntoView(selector) {
     const scrollTo = document.querySelector(selector);
     scrollTo.scrollIntoView(
@@ -123,4 +151,45 @@ function scrollIntoView(selector) {
             behavior:"smooth"
         }
     );
+    selectNavItem(navItems[sectionIds.indexOf(selector)]);
 }
+
+const observerOptions = {
+    root : null,
+    rootMargin  :'0px',
+    threshold : 0.3
+}
+
+const observerCallback = (entries, observer) => {
+    entries.forEach(entry => {
+        //console.log(entry.target);
+        if(!entry.isIntersecting && entry.intersectionRatio > 0){
+            //진입하지 않을 때
+            //console.log(entry);
+            const index = sectionIds.indexOf(`#${entry.target.id}`);
+            
+            //console.log(index,entry.target.id);
+            if(entry.boundingClientRect.y < 0 ){                
+                // 마이너스란? 아래 스크롤되면서 페이지가 올라옴, 아래 항목으로 이동
+                selectedNavIndex = index + 1; //다음 인덱스로 지정
+            } else { //위 항목으로 이동
+                selectedNavIndex = index - 1; //이전 인덱스로 지정
+            }
+            
+        }
+    });
+};
+
+const observer = new IntersectionObserver(observerCallback,observerOptions);
+sections.forEach(section => observer.observe(section));
+//???
+
+window.addEventListener('wheel',() => {
+    if(window.scrollY === 0) {
+        selectedNavIndex = 0;
+    }else if ( Math.round(window.scrollY + window.innerHeight ===document.body.clientHeight)){
+        //제일 끝이면
+       selectedNavIndex = navItems.length - 1;
+    }
+    selectNavItem(navItems[selectedNavIndex]);
+});
