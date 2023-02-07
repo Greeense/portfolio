@@ -2,16 +2,16 @@
 :root {
    /* Color */
    --color-white : #ffffff;
-   --color-light-white:#eeeeee;
-   --color-dark-white : #bdbdbd;
-   --color-pink : #fe918d;
-   --color-dark-pink : #ff6863;
+   --color-light-white:#f9f9f9;
+   --color-dark-white : #c0a9a1;
+   --color-pink : #108d2b;
+   --color-dark-pink : #63c979;
    --color-blakc:#4d4d4d;
-   --color-dark-grey : #4d4d4d;
+   --color-dark-grey : #463833;
    --color-grey : #616161;
-   --color-light-grey : #7c7979;
-   --color-blue : #73aace;
-   --color-yellow : #fff7d1;
+   --color-light-grey : #857a7a;
+   --color-blue : #93e3a8;
+   --color-yellow : #fdffe0;
    --color-orange : #feb546;
    --color-black:#000000;
    /* fontsize */
@@ -116,6 +116,7 @@ p {
 
 }
 .navbar__logo {
+    line-height: 80px;
     font-size : var(--font-medium);
     font-weight: var(--weight-semi-bold);
 }
@@ -125,6 +126,7 @@ p {
     color:var(--color-white);
     cursor : pointer;
     border:1px sold transparent;
+    text-shadow: -2px 0 #15a236, 0 2px #15a236, 2px 0 #15a236, 0 -2px #15a236;
     border-radius: var(--size-border-radius);
 }
 .navbar__menu__item.active {
@@ -145,7 +147,8 @@ p {
 
 /* HOME */
 #home {
-    background:url('image/home_background_12930ad7e0.png');
+    background:url('image/home_background_2.jpg');
+    background-size: cover;
     padding:40px;
     text-align:center;
 }
@@ -159,7 +162,8 @@ p {
 }
 .home__title,
 .home__description {
-    color : var(--color-white);
+    color : white;
+    text-shadow: -2px 0 #15a236, 0 2px #15a236, 2px 0 #15a236, 0 -2px #15a236;
 }
 
 .home__contact {
@@ -167,9 +171,10 @@ p {
     font-weight: var(--weight-regular);
     margin : 24px;
     padding:8px 12px;
-    border : 2px solid var(--color-white);
+    border : 3px solid var(--color-light-white);
     border-radius: 4px;
-    color :var(--color-white);
+    color :var(--color-black);
+    background-color: #F7FF98;
 }
 
 /* Section common */
@@ -274,7 +279,7 @@ p {
     flex-basis:40%;
 }
 .tools {
-    background-color: grey;
+    background-color: rgb(112, 81, 81);
 }
 .tools,.etc {
     padding:20px;
@@ -477,7 +482,9 @@ p {
     #navbar.navbar--dark {
         padding:16px;
     }
-
+    .navbar__logo {
+        line-height: 0px;
+    }
     .navbar__menu {
         flex-direction: column;
         text-align:center;
